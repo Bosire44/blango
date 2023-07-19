@@ -52,7 +52,9 @@ class Dev(Configuration):
       'blog',
       'crispy_forms',
       'crispy_bootstrap5',
+      'debug_toolbar'
   ]
+
   PASSWORD_HASHERS = [
       'django.contrib.auth.hashers.Argon2PasswordHasher',
       'django.contrib.auth.hashers.PBKDF2PasswordHasher',
@@ -60,7 +62,10 @@ class Dev(Configuration):
       'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
   ]
 
+  INTERNAL_IPS = ['192.168.10.93']
+
   MIDDLEWARE = [
+      'debug_toolbar.middleware.DebugToolbarMiddleware',
       'django.middleware.security.SecurityMiddleware',
       'django.contrib.sessions.middleware.SessionMiddleware',
       'django.middleware.common.CommonMiddleware',
@@ -68,6 +73,7 @@ class Dev(Configuration):
       'django.contrib.auth.middleware.AuthenticationMiddleware',
       'django.contrib.messages.middleware.MessageMiddleware',
       #'django.middleware.clickjacking.XFrameOptionsMiddleware',
+      
   ]
 
   LOGGING = {
