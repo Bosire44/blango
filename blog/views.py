@@ -4,6 +4,7 @@ import logging
 from django.utils import timezone
 from blog.forms import CommentForm
 
+
 logger = logging.getLogger(__name__)
 
 def index(request):
