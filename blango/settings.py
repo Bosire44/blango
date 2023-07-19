@@ -53,6 +53,12 @@ class Dev(Configuration):
       'crispy_forms',
       'crispy_bootstrap5',
   ]
+  PASSWORD_HASHERS = [
+      'django.contrib.auth.hashers.Argon2PasswordHasher',
+      'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+      'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+      'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+  ]
 
   MIDDLEWARE = [
       'django.middleware.security.SecurityMiddleware',
@@ -64,7 +70,7 @@ class Dev(Configuration):
       #'django.middleware.clickjacking.XFrameOptionsMiddleware',
   ]
 
-    LOGGING = {
+  LOGGING = {
         "version": 1,
         "disable_existing_loggers": False,
         "filters": {
