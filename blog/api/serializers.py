@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from blog.models import Post, Tag
-from blango_auth.models import User
+from blog.models import Post, Tag, User
+#from blango_auth.models import User
 
 class PostSerializer(serializers.ModelSerializer):
     tags = serializers.SlugRelatedField(
@@ -8,7 +8,9 @@ class PostSerializer(serializers.ModelSerializer):
     )
 
     author = serializers.HyperlinkedRelatedField(
-        queryset=User.objects.all(), view_name="api_user_detail", lookup_field="email"
+        queryset=User.objects.all(),
+        view_name="api_user_detail",
+        lookup_field="email"
     )
 
     class Meta:
