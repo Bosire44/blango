@@ -1,10 +1,9 @@
 from rest_framework import serializers
-<<<<<<< HEAD
+
 from blog.models import Post, Tag, User
 #from blango_auth.models import User
-=======
 from blog.models import Post, Tag
-from blango_auth.models import User
+#from blango_auth.models import User
 from blog.models import Post, Tag, Comment
 
 
@@ -30,7 +29,7 @@ class CommentSerializer(serializers.ModelSerializer):
     model = Comment
     fields = ["id", "creator", "content", "modified_at", "created_at"]
     readonly = ["modified_at","created_at"]
->>>>>>> 5fdb2bae1451f1dcefca68cf5c1b0feef8df8450
+
 
 class PostSerializer(serializers.ModelSerializer):
     tags = serializers.SlugRelatedField(
@@ -38,9 +37,11 @@ class PostSerializer(serializers.ModelSerializer):
     )
 
     author = serializers.HyperlinkedRelatedField(
-        queryset=User.objects.all(),
         view_name="api_user_detail",
-        lookup_field="email"
+        lookup_field="email",
+        queryset=User.objects.all(),
+        
+        
     )
 
     class Meta:

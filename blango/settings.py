@@ -61,7 +61,8 @@ class Dev(Configuration):
       'allauth.socialaccount',
       'allauth.socialaccount.providers.google',
       'rest_framework',
-      'rest_framework.authtoken'
+      'rest_framework.authtoken',
+      'drf_yasg'
   ]
 
   SITE_ID = 1
@@ -196,6 +197,12 @@ class Dev(Configuration):
   USE_L10N = True
 
   USE_TZ = True
+  SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+  }
 
 
   # Static files (CSS, JavaScript, Images)
