@@ -63,7 +63,8 @@ class Dev(Configuration):
       'rest_framework',
       'rest_framework.authtoken',
       'drf_yasg',
-      'django_filters'
+      'django_filters',
+      'versatileimagefield'
   ]
 
   SITE_ID = 1
@@ -80,6 +81,8 @@ class Dev(Configuration):
   ]
 
   INTERNAL_IPS = ['192.168.10.93']
+  MEDIA_ROOT = BASE_DIR / "media"
+  MEDIA_URL = "/media/"
 
   MIDDLEWARE = [
       'debug_toolbar.middleware.DebugToolbarMiddleware',
