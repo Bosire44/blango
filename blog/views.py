@@ -3,12 +3,14 @@ from blog.models import Post
 import logging
 from django.utils import timezone
 from blog.forms import CommentForm
-
+from django.urls import reverse
 
 logger = logging.getLogger(__name__)
 
 def post_table(request):
-    return render(request, "blog/post-table.html")
+    return render(
+        request, "blog/post-table.html", {"post_list_url": "/api/v1/posts/4"}
+    )
 
 def index(request):
   posts = Post.objects.filter(published_at__lte=timezone.now()).select_related("author")
